@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>後台登入管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #fff;
+        }
+
+        .btn-add {
+            color: #fff;
+            background-color: #0d6efd;
+            border: none;
+        }
+
+        .btn-add:hover {
+            background: #0b5ed7;
+        }
+
+        .btn-edit {
+            color: #212529;
+            border: 1px solid #212529;
+            background: #fff;
+        }
+
+        .btn-edit:hover {
+            background: #f8f9fa;
+        }
+
+        .btn-del {
+            color: #fff;
+            background: #dc3545;
+            border: none;
+        }
+
+        .btn-del:hover {
+            background: #a71d2a;
+        }
+
+        .table-actions {
+            white-space: nowrap;
+        }
+
+        #case-section {
+            display: none;
+        }
+
+        #login-section {
+            max-width: 380px;
+            margin: 6rem auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 登入區塊 -->
+        <div id="login-section" class="border rounded p-4 shadow">
+            <h3 class="mb-4 text-center">後台登入</h3>
+            <form id="login-form">
+                <div class="mb-3">
+                    <label for="username" class="form-label">帳號</label>
+                    <input type="text" class="form-control" id="username" required autocomplete="username" />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">密碼</label>
+                    <input type="password" class="form-control" id="password" required
+                        autocomplete="current-password" />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">登入</button>
+            </form>
+        </div>
+
+        <!-- 案例管理區塊 -->
+        <div id="case-section" class="py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>案例分享管理</h2>
+                <button id="btn-add" class="btn btn-add">＋ 新增案例</button>
+            </div>
+            <button id="btn-logout" class="btn btn-secondary mb-3">登出</button>
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>上傳者</th>
+                        <th>上傳日期</th>
+                        <th>承辦律師</th>
+                        <th>案例標題</th>
+                        <th>案例說明</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="case-list"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal (新增/編輯) -->
+    <div class="modal fade" id="caseModal" tabindex="-1" aria-labelledby="caseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="case-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="caseModalLabel">新增/編輯案例</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="case-id" />
+                        <div class="mb-3">
+                            <label for="case-uploader" class="form-label">上傳者</label>
+                            <input type="text" class="form-control" id="case-uploader" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="case-date" class="form-label">上傳日期</label>
+                            <input type="date" class="form-control" id="case-date" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="case-lawyer" class="form-label">承辦律師</label>
+                            <input type="text" class="form-control" id="case-lawyer" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="case-title" class="form-label">案例標題</label>
+                            <input type="text" class="form-control" id="case-title" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="case-desc" class="form-label">案例說明</label>
+                            <textarea class="form-control" id="case-desc" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-add">儲存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 模擬登入狀態（正式應用請換成後端驗證）
+        let loggedIn = false;
+
+        const loginSection = document.getElementById('login-section');
+        const caseSection = document.getElementById('case-section');
+
+        function updateView() {
+            if (loggedIn) {
+                loginSection.style.display = 'none';
+                caseSection.style.display = 'block';
+                fetchCases();
+            } else {
+                loginSection.style.display = 'block';
+                caseSection.style.display = 'none';
+            }
+        }
+
+        document.getElementById('login-form').onsubmit = function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // 這邊單純模擬前端使用者驗證，正式應該走後端 API
+            if (username === 'admin' && password === 'password') {
+                loggedIn = true;
+                updateView();
+            } else {
+                alert('帳號密碼錯誤');
+            }
+        };
+
+        document.getElementById('btn-logout').onclick = function () {
+            loggedIn = false;
+            updateView();
+        };
+
+        // 以下是案例管理相關程式碼，與之前提供可以共用
+        let editingId = null;
+
+        function fetchCases() {
+            fetch('backend.php?action=list')
+                .then((r) => r.json())
+                .then((data) => {
+                    const list = document.getElementById('case-list');
+                    list.innerHTML = '';
+                    data.forEach((c) => {
+                        list.innerHTML += `<tr>
+              <td>${c.id}</td>
+              <td>${c.uploader}</td>
+              <td>${c.upload_date}</td>
+              <td>${c.lawyer}</td>
+              <td>${c.title}</td>
+              <td>${c.description}</td>
+              <td class="table-actions">
+                <button class="btn btn-edit btn-sm me-2" onclick="editCase(${c.id})">編輯</button>
+                <button class="btn btn-del btn-sm" onclick="deleteCase(${c.id})">刪除</button>
+              </td>
+            </tr>`;
+                    });
+                });
+        }
+
+        function editCase(id) {
+            fetch('backend.php?action=get&id=' + id)
+                .then((r) => r.json())
+                .then((c) => {
+                    editingId = id;
+                    document.getElementById('case-id').value = c.id;
+                    document.getElementById('case-uploader').value = c.uploader;
+                    document.getElementById('case-date').value = c.upload_date;
+                    document.getElementById('case-lawyer').value = c.lawyer;
+                    document.getElementById('case-title').value = c.title;
+                    document.getElementById('case-desc').value = c.description;
+                    new bootstrap.Modal(document.getElementById('caseModal')).show();
+                });
+        }
+
+        document.getElementById('btn-add').onclick = function () {
+            editingId = null;
+            document.getElementById('case-id').value = '';
+            document.getElementById('case-uploader').value = '';
+            document.getElementById('case-date').value = '';
+            document.getElementById('case-lawyer').value = '';
+            document.getElementById('case-title').value = '';
+            document.getElementById('case-desc').value = '';
+            new bootstrap.Modal(document.getElementById('caseModal')).show();
+        };
+
+        document.getElementById('case-form').onsubmit = function (e) {
+            e.preventDefault();
+            let data = {
+                id: document.getElementById('case-id').value,
+                uploader: document.getElementById('case-uploader').value,
+                upload_date: document.getElementById('case-date').value,
+                lawyer: document.getElementById('case-lawyer').value,
+                title: document.getElementById('case-title').value,
+                description: document.getElementById('case-desc').value,
+            };
+            fetch('backend.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+                .then((r) => r.json())
+                .then((resp) => {
+                    if (resp.success) {
+                        fetchCases();
+                        bootstrap.Modal.getInstance(document.getElementById('caseModal')).hide();
+                    } else {
+                        alert('操作失敗');
+                    }
+                });
+        };
+
+        function deleteCase(id) {
+            if (confirm('確定要刪除？')) {
+                fetch('backend.php', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id }),
+                })
+                    .then((r) => r.json())
+                    .then((resp) => {
+                        if (resp.success) {
+                            fetchCases();
+                        } else {
+                            alert('刪除失敗');
+                        }
+                    });
+            }
+        }
+
+        updateView();
+    </script>
+</body>
+
+</html>
