@@ -202,40 +202,9 @@
             </div>
         </div>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>律師急救室</h3>
-                <p style="color: var(--color-text-secondary); line-height: 1.8;">
-                    專業的刑事法律團隊，提供24小時緊急法律服務，全台律師隨時待命。
-                </p>
+            <div class="stories-grid" id="storiesGrid">
+                <div class="story-loading">載入中…</div>
             </div>
-            <div class="footer-section">
-                <h3>快速連結</h3>
-                <ul>
-                    <li><a href="#specialties">專精項目</a></li>
-                    <li><a href="#lawyers">團隊律師</a></li>
-                    <li><a href="#cases">成功案例</a></li>
-                    <li><a href="#mission">平台宗旨</a></li>
-                    <li><a href="#stories">案例分享</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>聯絡資訊</h3>
-                <div class="footer-contact">
-                    <div class="contact-item">📞 24小時服務專線</div>
-                    <div class="contact-item">📧 lawyer119110@example.com</div>
-                    <div class="contact-item">📍 全台服務據點</div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 律師急救室。版權所有。| 本網站內容僅供參考，不構成法律建議。</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
 <script>
 // Navigation scroll effect
 const navbar = document.getElementById('navbar');
@@ -288,7 +257,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 async function fetchCaseStories() {
     try {
         const apiUrl = 'http://localhost:3307/backend.php?action=list';
-        const response = await fetch(apiUrl, { credentials: 'include' });
+    const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error('Failed to fetch case stories');
         }
