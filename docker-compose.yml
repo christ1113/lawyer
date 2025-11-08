@@ -11,7 +11,7 @@ services:
       MYSQL_PASSWORD: lawyerpass
     volumes:
       - db_data:/var/lib/mysql
-      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - ./mysql-init:/docker-entrypoint-initdb.d:ro
     ports:
       - "8082:3306"
     healthcheck:
@@ -21,7 +21,9 @@ services:
       retries: 5
 
   backend:
-    image: php:8.1-apache
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     restart: always
     volumes:
       - ./backend:/var/www/html
