@@ -111,6 +111,20 @@
                     <div class="modal-body">
                         <input type="hidden" id="case-id" />
                         <div class="mb-3">
+                            <label for="case-title" class="form-label">案例標題</label>
+                            <input type="text" class="form-control" id="case-title" required 
+                                placeholder="例：毒品案獲緩刑 - 台北王先生" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="case-client-name" class="form-label">當事人姓名</label>
+                            <input type="text" class="form-control" id="case-client-name"
+                                placeholder="例：台北王先生（可匿名）" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="case-lawyer" class="form-label">承辦律師</label>
+                            <input type="text" class="form-control" id="case-lawyer" required placeholder="輸入承辦律師姓名" />
+                        </div>
+                        <div class="mb-3">
                             <label for="case-uploader" class="form-label">上傳者</label>
                             <input type="text" class="form-control" id="case-uploader" required />
                         </div>
@@ -119,16 +133,9 @@
                             <input type="date" class="form-control" id="case-date" required />
                         </div>
                         <div class="mb-3">
-                            <label for="case-lawyer" class="form-label">承辦律師</label>
-                            <input type="text" class="form-control" id="case-lawyer" required />
-                        </div>
-                        <div class="mb-3">
-                            <label for="case-title" class="form-label">案例標題</label>
-                            <input type="text" class="form-control" id="case-title" required />
-                        </div>
-                        <div class="mb-3">
                             <label for="case-desc" class="form-label">案例說明</label>
-                            <textarea class="form-control" id="case-desc" rows="3" required></textarea>
+                            <textarea class="form-control" id="case-desc" rows="5" required
+                                placeholder="請詳細描述案件過程、處理方式與結果..."></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -161,21 +168,63 @@
 
         document.getElementById('login-form').onsubmit = function (e) {
             e.preventDefault();
-            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
 
-            // 這邊單純模擬前端使用者驗證，正式應該走後端 API
-            if (username === 'admin' && password === 'password') {
-                loggedIn = true;
-                updateView();
-            } else {
-                alert('帳號密碼錯誤');
-            }
+            console.log('正在嘗試登入...', { email });  // 除錯用
+            
+            // 呼叫後端 API 驗證
+            fetch('backend.php?action=login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        throw new Error('帳號或密碼錯誤');
+                    }
+                    throw new Error('登入失敗');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    loggedIn = true;
+                    // 保存用戶資訊
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    updateView();
+                } else {
+                    alert(data.msg || '登入失敗');
+                }
+            })
+            .catch(error => {
+                console.error('登入錯誤:', error);
+                alert(error.message || '登入失敗，請稍後再試');
+            })
         };
 
         document.getElementById('btn-logout').onclick = function () {
             loggedIn = false;
-            updateView();
+            localStorage.removeItem('user');
+            
+            // 呼叫後端登出
+            fetch('backend.php?action=logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(() => {
+                updateView();
+            })
+            .catch(error => {
+                console.error('登出錯誤:', error);
+                // 即使發生錯誤，也要確保前端登出
+                updateView();
+            });
         };
 
         // 以下是案例管理相關程式碼，與之前提供可以共用
@@ -184,38 +233,57 @@
         function fetchCases() {
             fetch('backend.php?action=list')
                 .then((r) => r.json())
-                .then((data) => {
+                .then((resp) => {
+                    if (!resp.success) {
+                        throw new Error(resp.msg || '獲取資料失敗');
+                    }
                     const list = document.getElementById('case-list');
                     list.innerHTML = '';
-                    data.forEach((c) => {
+                    resp.data.forEach((c) => {
+                        // 限制描述的長度
+                        const shortDesc = c.description.length > 50 
+                            ? c.description.substring(0, 50) + '...'
+                            : c.description;
+                            
                         list.innerHTML += `<tr>
-              <td>${c.id}</td>
-              <td>${c.uploader}</td>
-              <td>${c.upload_date}</td>
-              <td>${c.lawyer}</td>
-              <td>${c.title}</td>
-              <td>${c.description}</td>
-              <td class="table-actions">
-                <button class="btn btn-edit btn-sm me-2" onclick="editCase(${c.id})">編輯</button>
-                <button class="btn btn-del btn-sm" onclick="deleteCase(${c.id})">刪除</button>
-              </td>
-            </tr>`;
+                            <td>${c.id}</td>
+                            <td>${c.uploader}</td>
+                            <td>${c.upload_date}</td>
+                            <td>${c.lawyer}</td>
+                            <td>${c.title}</td>
+                            <td>${shortDesc}</td>
+                            <td class="table-actions">
+                                <button class="btn btn-edit btn-sm me-2" onclick="editCase(${c.id})">編輯</button>
+                                <button class="btn btn-del btn-sm" onclick="deleteCase(${c.id})">刪除</button>
+                            </td>
+                        </tr>`;
                     });
+                })
+                .catch(error => {
+                    alert(error.message);
                 });
         }
 
         function editCase(id) {
             fetch('backend.php?action=get&id=' + id)
                 .then((r) => r.json())
-                .then((c) => {
+                .then((resp) => {
+                    if (!resp.success) {
+                        throw new Error(resp.msg || '獲取資料失敗');
+                    }
+                    const c = resp.data;
                     editingId = id;
                     document.getElementById('case-id').value = c.id;
+                    document.getElementById('case-title').value = c.title;
+                    document.getElementById('case-client-name').value = c.client_name || '';
                     document.getElementById('case-uploader').value = c.uploader;
                     document.getElementById('case-date').value = c.upload_date;
                     document.getElementById('case-lawyer').value = c.lawyer;
-                    document.getElementById('case-title').value = c.title;
                     document.getElementById('case-desc').value = c.description;
                     new bootstrap.Modal(document.getElementById('caseModal')).show();
+                })
+                .catch(error => {
+                    alert(error.message);
                 });
         }
 
@@ -234,26 +302,37 @@
             e.preventDefault();
             let data = {
                 id: document.getElementById('case-id').value,
+                title: document.getElementById('case-title').value,
+                client_name: document.getElementById('case-client-name').value,
+                lawyer: document.getElementById('case-lawyer').value,
                 uploader: document.getElementById('case-uploader').value,
                 upload_date: document.getElementById('case-date').value,
-                lawyer: document.getElementById('case-lawyer').value,
-                title: document.getElementById('case-title').value,
                 description: document.getElementById('case-desc').value,
             };
+
+            // 如果id是空字串，就刪除它，讓後端知道這是新增而不是更新
+            if (!data.id) {
+                delete data.id;
+            }
+
             fetch('backend.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             })
-                .then((r) => r.json())
-                .then((resp) => {
-                    if (resp.success) {
-                        fetchCases();
-                        bootstrap.Modal.getInstance(document.getElementById('caseModal')).hide();
-                    } else {
-                        alert('操作失敗');
-                    }
-                });
+            .then((r) => r.json())
+            .then((resp) => {
+                if (resp.success) {
+                    alert(resp.msg); // 顯示成功訊息
+                    fetchCases();
+                    bootstrap.Modal.getInstance(document.getElementById('caseModal')).hide();
+                } else {
+                    throw new Error(resp.msg || '操作失敗');
+                }
+            })
+            .catch(error => {
+                alert(error.message);
+            });
         };
 
         function deleteCase(id) {

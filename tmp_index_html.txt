@@ -1,28 +1,28 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>律師急救室 | 全台24小時律師團隊</title>
+    <title>å¾å¸«æ¥æå®¤ | å¨å°24å°æå¾å¸«åé</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">律師<span>急救室</span></a>
+            <a href="#" class="nav-logo">å¾å¸«<span>æ¥æå®¤</span></a>
             <button class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#specialties">專精項目</a></li>
-                <li><a href="#lawyers">團隊律師</a></li>
-                <li><a href="#cases">成功案例</a></li>
-                <li><a href="#mission">平台宗旨</a></li>
-                <li><a href="#stories">案例分享</a></li>
-                <li><a href="#contact" class="nav-cta">24小時諮詢</a></li>
+                <li><a href="#specialties">å°ç²¾é ç®</a></li>
+                <li><a href="#lawyers">åéå¾å¸«</a></li>
+                <li><a href="#cases">æåæ¡ä¾</a></li>
+                <li><a href="#mission">å¹³å°å®æ¨</a></li>
+                <li><a href="#stories">æ¡ä¾åäº«</a></li>
+                <li><a href="#contact" class="nav-cta">24å°æè«®è©¢</a></li>
             </ul>
         </div>
     </nav>
@@ -30,76 +30,76 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">律師急救室 | <span>全台24小時律師</span></h1>
+            <h1 class="hero-title">å¾å¸«æ¥æå®¤ | <span>å¨å°24å°æå¾å¸«</span></h1>
             <div class="hero-divider"></div>
-            <p class="hero-subtitle">最專業的刑事法律團隊 隨時待命</p>
+            <p class="hero-subtitle">æå°æ¥­çåäºæ³å¾åé é¨æå¾å½</p>
         </div>
     </section>
 
     <!-- Specialties Section -->
     <section id="specialties">
         <div class="section-header">
-            <h2 class="section-title">專精項目</h2>
-            <p class="section-description">涵蓋刑事、民事、家事等各類法律領域</p>
+            <h2 class="section-title">å°ç²¾é ç®</h2>
+            <p class="section-description">æ¶µèåäºãæ°äºãå®¶äºç­åé¡æ³å¾é å</p>
         </div>
         <div class="specialties-grid">
-            <div class="specialty-card"><h3>刑事陪偵</h3></div>
-            <div class="specialty-card"><h3>逮捕搜索現場支援</h3></div>
-            <div class="specialty-card"><h3>毒品案</h3></div>
-            <div class="specialty-card"><h3>詐欺案</h3></div>
-            <div class="specialty-card"><h3>車手水房</h3></div>
-            <div class="specialty-card"><h3>性犯罪案件</h3></div>
-            <div class="specialty-card"><h3>槍砲彈藥</h3></div>
-            <div class="specialty-card"><h3>離婚</h3></div>
-            <div class="specialty-card"><h3>親權酌定</h3></div>
-            <div class="specialty-card"><h3>剩餘財產分配</h3></div>
-            <div class="specialty-card"><h3>人頭帳戶</h3></div>
-            <div class="specialty-card"><h3>組織犯罪</h3></div>
+            <div class="specialty-card"><h3>åäºéªåµ</h3></div>
+            <div class="specialty-card"><h3>é®ææç´¢ç¾å ´æ¯æ´</h3></div>
+            <div class="specialty-card"><h3>æ¯åæ¡</h3></div>
+            <div class="specialty-card"><h3>è©æ¬ºæ¡</h3></div>
+            <div class="specialty-card"><h3>è»ææ°´æ¿</h3></div>
+            <div class="specialty-card"><h3>æ§ç¯ç½ªæ¡ä»¶</h3></div>
+            <div class="specialty-card"><h3>æ§ç ²å½è¥</h3></div>
+            <div class="specialty-card"><h3>é¢å©</h3></div>
+            <div class="specialty-card"><h3>è¦ªæ¬éå®</h3></div>
+            <div class="specialty-card"><h3>å©é¤è²¡ç¢åé</h3></div>
+            <div class="specialty-card"><h3>äººé ­å¸³æ¶</h3></div>
+            <div class="specialty-card"><h3>çµç¹ç¯ç½ª</h3></div>
         </div>
     </section>
 
     <!-- Lawyers Section -->
     <section id="lawyers">
         <div class="section-header">
-            <h2 class="section-title">團隊律師</h2>
-            <p class="section-description">經驗豐富的專業律師團隊，為您提供最佳法律策略</p>
+            <h2 class="section-title">åéå¾å¸«</h2>
+            <p class="section-description">ç¶é©è±å¯çå°æ¥­å¾å¸«åéï¼çºæ¨æä¾æä½³æ³å¾ç­ç¥</p>
         </div>
         <div class="lawyers-grid">
             <div class="lawyer-card">
-                <div class="lawyer-avatar">李</div>
-                <h3 class="lawyer-name">李仲唯</h3>
-                <p class="lawyer-title">資深刑事律師</p>
-                <p class="lawyer-education">台灣大學法律系、律師資格</p>
+                <div class="lawyer-avatar">æ</div>
+                <h3 class="lawyer-name">æä»²å¯</h3>
+                <p class="lawyer-title">è³æ·±åäºå¾å¸«</p>
+                <p class="lawyer-education">å°ç£å¤§å­¸æ³å¾ç³»ãå¾å¸«è³æ ¼</p>
                 <div class="lawyer-specialties">
-                    <span class="specialty-tag">刑事陪偵</span>
-                    <span class="specialty-tag">毒品案</span>
-                    <span class="specialty-tag">詐欺案</span>
+                    <span class="specialty-tag">åäºéªåµ</span>
+                    <span class="specialty-tag">æ¯åæ¡</span>
+                    <span class="specialty-tag">è©æ¬ºæ¡</span>
                 </div>
-                <p class="lawyer-stats">成功案例：<strong>128</strong> 件</p>
+                <p class="lawyer-stats">æåæ¡ä¾ï¼<strong>128</strong> ä»¶</p>
             </div>
             <div class="lawyer-card">
-                <div class="lawyer-avatar">李</div>
-                <h3 class="lawyer-name">李澤泰</h3>
-                <p class="lawyer-title">刑民事律師</p>
-                <p class="lawyer-education">國立政治大學法律系、律師資格</p>
+                <div class="lawyer-avatar">æ</div>
+                <h3 class="lawyer-name">ææ¾¤æ³°</h3>
+                <p class="lawyer-title">åæ°äºå¾å¸«</p>
+                <p class="lawyer-education">åç«æ¿æ²»å¤§å­¸æ³å¾ç³»ãå¾å¸«è³æ ¼</p>
                 <div class="lawyer-specialties">
-                    <span class="specialty-tag">車手水房</span>
-                    <span class="specialty-tag">人頭帳戶</span>
-                    <span class="specialty-tag">組織犯罪</span>
+                    <span class="specialty-tag">è»ææ°´æ¿</span>
+                    <span class="specialty-tag">äººé ­å¸³æ¶</span>
+                    <span class="specialty-tag">çµç¹ç¯ç½ª</span>
                 </div>
-                <p class="lawyer-stats">成功案例：<strong>95</strong> 件</p>
+                <p class="lawyer-stats">æåæ¡ä¾ï¼<strong>95</strong> ä»¶</p>
             </div>
             <div class="lawyer-card">
-                <div class="lawyer-avatar">林</div>
-                <h3 class="lawyer-name">林凱鈞</h3>
-                <p class="lawyer-title">家事與性犯罪專精律師</p>
-                <p class="lawyer-education">中正大學法律系、律師資格</p>
+                <div class="lawyer-avatar">æ</div>
+                <h3 class="lawyer-name">æå±é</h3>
+                <p class="lawyer-title">å®¶äºèæ§ç¯ç½ªå°ç²¾å¾å¸«</p>
+                <p class="lawyer-education">ä¸­æ­£å¤§å­¸æ³å¾ç³»ãå¾å¸«è³æ ¼</p>
                 <div class="lawyer-specialties">
-                    <span class="specialty-tag">離婚</span>
-                    <span class="specialty-tag">親權酌定</span>
-                    <span class="specialty-tag">性犯罪案件</span>
+                    <span class="specialty-tag">é¢å©</span>
+                    <span class="specialty-tag">è¦ªæ¬éå®</span>
+                    <span class="specialty-tag">æ§ç¯ç½ªæ¡ä»¶</span>
                 </div>
-                <p class="lawyer-stats">成功案例：<strong>87</strong> 件</p>
+                <p class="lawyer-stats">æåæ¡ä¾ï¼<strong>87</strong> ä»¶</p>
             </div>
         </div>
     </section>
@@ -107,25 +107,25 @@
     <!-- Rescue Cases Section -->
     <section id="rescue">
         <div class="section-header">
-            <h2 class="section-title">救援實況</h2>
-            <p class="section-description">24小時待命，30分鐘內迅速到場支援</p>
+            <h2 class="section-title">ææ´å¯¦æ³</h2>
+            <p class="section-description">24å°æå¾å½ï¼30åéå§è¿éå°å ´æ¯æ´</p>
         </div>
         <div class="rescue-grid">
             <div class="rescue-card">
-                <h3>車禍過失傷害案</h3>
-                <p>緊急法律支援與現場應對指導</p>
+                <h3>è»ç¦éå¤±å·å®³æ¡</h3>
+                <p>ç·æ¥æ³å¾æ¯æ´èç¾å ´æå°æå°</p>
             </div>
             <div class="rescue-card">
-                <h3>人頭帳戶遭詐</h3>
-                <p>即時法律諮詢與後續訴訟策略</p>
+                <h3>äººé ­å¸³æ¶é­è©</h3>
+                <p>å³ææ³å¾è«®è©¢èå¾çºè¨´è¨ç­ç¥</p>
             </div>
             <div class="rescue-card">
-                <h3>毒品案件</h3>
-                <p>陪同偵訊與專業辯護策略規劃</p>
+                <h3>æ¯åæ¡ä»¶</h3>
+                <p>éªååµè¨èå°æ¥­è¾¯è­·ç­ç¥è¦å</p>
             </div>
             <div class="rescue-card">
-                <h3>離婚調解</h3>
-                <p>家事法律協助與權益維護</p>
+                <h3>é¢å©èª¿è§£</h3>
+                <p>å®¶äºæ³å¾åå©èæ¬çç¶­è­·</p>
             </div>
         </div>
     </section>
@@ -133,25 +133,25 @@
     <!-- Success Cases Section -->
     <section id="cases">
         <div class="section-header">
-            <h2 class="section-title">勝訴案例</h2>
-            <p class="section-description">專業法律策略，成功捍衛當事人權益</p>
+            <h2 class="section-title">åè¨´æ¡ä¾</h2>
+            <p class="section-description">å°æ¥­æ³å¾ç­ç¥ï¼æåæè¡ç¶äºäººæ¬ç</p>
         </div>
         <div class="cases-grid">
             <div class="case-card">
-                <h3>販賣毒品獲得緩刑</h3>
-                <p>透過精準的法律策略與證據分析，成功為當事人爭取到緩刑判決，避免入監服刑。</p>
+                <h3>è²©è³£æ¯åç²å¾ç·©å</h3>
+                <p>ééç²¾æºçæ³å¾ç­ç¥èè­æåæï¼æåçºç¶äºäººç­åå°ç·©åå¤æ±ºï¼é¿åå¥ç£æåã</p>
             </div>
             <div class="case-card">
-                <h3>詐欺車手交保</h3>
-                <p>在檢察官欲聲押的情況下，清楚論述不應羈押的法律依據，成功協助當事人交保。</p>
+                <h3>è©æ¬ºè»æäº¤ä¿</h3>
+                <p>å¨æª¢å¯å®æ¬²è²æ¼çææ³ä¸ï¼æ¸æ¥è«è¿°ä¸æç¾æ¼çæ³å¾ä¾æï¼æååå©ç¶äºäººäº¤ä¿ã</p>
             </div>
             <div class="case-card">
-                <h3>遭騙帳戶不起訴</h3>
-                <p>釐清當事人並非故意提供帳戶，成功說服檢察官作出不起訴處分。</p>
+                <h3>é­é¨å¸³æ¶ä¸èµ·è¨´</h3>
+                <p>éæ¸ç¶äºäººä¸¦éæææä¾å¸³æ¶ï¼æåèªªææª¢å¯å®ä½åºä¸èµ·è¨´èåã</p>
             </div>
             <div class="case-card">
-                <h3>車禍過失傷害不起訴</h3>
-                <p>詳細分析事故現場，提出有利證據，最終獲得不起訴處分。</p>
+                <h3>è»ç¦éå¤±å·å®³ä¸èµ·è¨´</h3>
+                <p>è©³ç´°åæäºæç¾å ´ï¼æåºæå©è­æï¼æçµç²å¾ä¸èµ·è¨´èåã</p>
             </div>
         </div>
     </section>
@@ -159,24 +159,24 @@
     <!-- Mission Section -->
     <section id="mission">
         <div class="section-header">
-            <h2 class="section-title">平台宗旨</h2>
-            <p class="section-description">我們的核心價值與服務承諾</p>
+            <h2 class="section-title">å¹³å°å®æ¨</h2>
+            <p class="section-description">æåçæ ¸å¿å¹å¼èæåæ¿è«¾</p>
         </div>
         <div class="mission-grid">
             <div class="mission-card">
-                <div class="mission-icon">🔥</div>
-                <h3>熱情</h3>
-                <p>全省日夜律師值班，30分內急速到場</p>
+                <div class="mission-icon">ð¥</div>
+                <h3>ç±æ</h3>
+                <p>å¨çæ¥å¤å¾å¸«å¼ç­ï¼30åå§æ¥éå°å ´</p>
             </div>
             <div class="mission-card">
-                <div class="mission-icon">💛</div>
-                <h3>貼心</h3>
-                <p>從偵訊到訴訟，全程心靈陪伴</p>
+                <div class="mission-icon">ð</div>
+                <h3>è²¼å¿</h3>
+                <p>å¾åµè¨å°è¨´è¨ï¼å¨ç¨å¿ééªä¼´</p>
             </div>
             <div class="mission-card">
-                <div class="mission-icon">⚖️</div>
-                <h3>專業</h3>
-                <p>各領域資深律師，精準法律策略</p>
+                <div class="mission-icon">âï¸</div>
+                <h3>å°æ¥­</h3>
+                <p>åé åè³æ·±å¾å¸«ï¼ç²¾æºæ³å¾ç­ç¥</p>
             </div>
         </div>
     </section>
@@ -184,8 +184,8 @@
     <!-- Case Stories Section -->
     <section id="stories">
         <div class="section-header">
-            <h2 class="section-title">成功案例分享</h2>
-            <p class="section-description">真實客戶的親身經歷與評價</p>
+            <h2 class="section-title">æåæ¡ä¾åäº«</h2>
+            <p class="section-description">çå¯¦å®¢æ¶çè¦ªèº«ç¶æ­·èè©å¹</p>
         </div>
         <div class="stories-grid">
             <!-- Case stories will be dynamically loaded here -->
@@ -196,39 +196,39 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-cta">
-                <h3>24小時緊急法律諮詢</h3>
-                <p>全省律師待命，30分鐘內到場支援</p>
-                <button>立即聯繫</button>
+                <h3>24å°æç·æ¥æ³å¾è«®è©¢</h3>
+                <p>å¨çå¾å¸«å¾å½ï¼30åéå§å°å ´æ¯æ´</p>
+                <button>ç«å³è¯ç¹«</button>
             </div>
         </div>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>律師急救室</h3>
+                <h3>å¾å¸«æ¥æå®¤</h3>
                 <p style="color: var(--color-text-secondary); line-height: 1.8;">
-                    專業的刑事法律團隊，提供24小時緊急法律服務，全台律師隨時待命。
+                    å°æ¥­çåäºæ³å¾åéï¼æä¾24å°æç·æ¥æ³å¾æåï¼å¨å°å¾å¸«é¨æå¾å½ã
                 </p>
             </div>
             <div class="footer-section">
-                <h3>快速連結</h3>
+                <h3>å¿«éé£çµ</h3>
                 <ul>
-                    <li><a href="#specialties">專精項目</a></li>
-                    <li><a href="#lawyers">團隊律師</a></li>
-                    <li><a href="#cases">成功案例</a></li>
-                    <li><a href="#mission">平台宗旨</a></li>
-                    <li><a href="#stories">案例分享</a></li>
+                    <li><a href="#specialties">å°ç²¾é ç®</a></li>
+                    <li><a href="#lawyers">åéå¾å¸«</a></li>
+                    <li><a href="#cases">æåæ¡ä¾</a></li>
+                    <li><a href="#mission">å¹³å°å®æ¨</a></li>
+                    <li><a href="#stories">æ¡ä¾åäº«</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>聯絡資訊</h3>
+                <h3>è¯çµ¡è³è¨</h3>
                 <div class="footer-contact">
-                    <div class="contact-item">📞 24小時服務專線</div>
-                    <div class="contact-item">📧 lawyer119110@example.com</div>
-                    <div class="contact-item">📍 全台服務據點</div>
+                    <div class="contact-item">ð 24å°ææåå°ç·</div>
+                    <div class="contact-item">ð§ lawyer119110@example.com</div>
+                    <div class="contact-item">ð å¨å°æåæé»</div>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 律師急救室。版權所有。| 本網站內容僅供參考，不構成法律建議。</p>
+            <p>&copy; 2025 å¾å¸«æ¥æå®¤ãçæ¬ææã| æ¬ç¶²ç«å§å®¹åä¾åèï¼ä¸æ§ææ³å¾å»ºè­°ã</p>
         </div>
     </footer>
 
@@ -309,7 +309,7 @@ function renderCaseStories(stories) {
         <div class="story-card">
             <div class="story-header">
                 <span class="story-date">${story.upload_date}</span>
-                <span class="story-lawyer">承辦律師：${story.lawyer}</span>
+                <span class="story-lawyer">æ¿è¾¦å¾å¸«ï¼${story.lawyer}</span>
             </div>
             <h3 class="story-title">${story.title} - ${story.client_name}</h3>
             <p class="story-content">${story.description}</p>
