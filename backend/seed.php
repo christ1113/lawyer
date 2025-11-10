@@ -4,7 +4,7 @@
 require __DIR__ . '/db.php';
 
 // This script is intended to be run inside the backend container after the DB is ready:
-//   docker exec -i <backend-container> php /var/www/html/backend/seed.php
+//   docker exec -i <backend-container> php /var/www/html/seed.php
 
 try {
     $db = getPDO();
